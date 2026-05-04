@@ -1,0 +1,159 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 210 100% 3%;
+    --foreground: 210 20% 98%;
+    --card: 210 100% 8%;
+    --card-foreground: 210 20% 98%;
+    --popover: 210 100% 5%;
+    --popover-foreground: 210 20% 98%;
+    --primary: 145 52% 36%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 210 100% 12%;
+    --secondary-foreground: 210 20% 98%;
+    --muted: 210 20% 20%;
+    --muted-foreground: 215 16% 57%;
+    --accent: 210 100% 12%;
+    --accent-foreground: 210 20% 98%;
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 210 50% 15%;
+    --input: 210 50% 15%;
+    --ring: 145 52% 36%;
+    --radius: 0.625rem;
+  }
+
+  * {
+    @apply border-border;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply bg-obsidian text-light font-body antialiased;
+    overflow-x: hidden;
+  }
+}
+
+@layer components {
+  .char-reveal {
+    display: inline-block;
+    transform-origin: center bottom;
+    animation: charRotateReveal 0.6s cubic-bezier(0.16, 1, 0.3, 1) both;
+    will-change: transform, opacity;
+  }
+
+  .glass-panel {
+    background: rgba(0, 20, 10, 0.45);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    border: 1px solid rgba(45, 138, 78, 0.2);
+  }
+
+  .glass-panel-strong {
+    background: rgba(0, 8, 20, 0.88);
+    backdrop-filter: blur(24px);
+    -webkit-backdrop-filter: blur(24px);
+    border-bottom: 1px solid rgba(45, 138, 78, 0.15);
+  }
+
+  .text-gradient-forest {
+    background: linear-gradient(135deg, #2d8a4e 0%, #3aab62 50%, #4dcc7a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  /* Keep gold for backwards compat */
+  .text-gradient-gold {
+    background: linear-gradient(135deg, #2d8a4e 0%, #3aab62 50%, #4dcc7a 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .btn-forest {
+    @apply font-semibold px-8 py-3 rounded-lg transition-all duration-300;
+    background: #2d8a4e;
+    color: white;
+  }
+
+  .btn-forest:hover {
+    background: #3aab62;
+    box-shadow: 0 0 30px rgba(45, 138, 78, 0.4);
+    transform: scale(1.02);
+  }
+
+  .btn-outline-forest {
+    @apply border-2 font-semibold px-8 py-3 rounded-lg transition-all duration-300 bg-transparent;
+    border-color: #3aab62;
+    color: #3aab62;
+  }
+
+  .btn-outline-forest:hover {
+    background: #2d8a4e;
+    color: white;
+    box-shadow: 0 0 30px rgba(45, 138, 78, 0.3);
+  }
+
+  /* Aliases for old gold classes used in WhyChooseUs/Testimonials */
+  .btn-gold {
+    @apply font-semibold px-8 py-3 rounded-lg transition-all duration-300;
+    background: #2d8a4e;
+    color: white;
+  }
+  .btn-gold:hover {
+    background: #3aab62;
+    box-shadow: 0 0 30px rgba(45, 138, 78, 0.4);
+    transform: scale(1.02);
+  }
+
+  .section-padding {
+    padding-top: clamp(80px, 12vh, 160px);
+    padding-bottom: clamp(80px, 12vh, 160px);
+  }
+}
+
+@layer utilities {
+  .perspective-1000 {
+    perspective: 1000px;
+  }
+
+  .preserve-3d {
+    transform-style: preserve-3d;
+  }
+}
+
+@keyframes charRotateReveal {
+  0% {
+    transform: rotateX(90deg) translateY(20px);
+    opacity: 0;
+  }
+  100% {
+    transform: rotateX(0deg) translateY(0);
+    opacity: 1;
+  }
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: #000814;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #1a4d2e;
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #2d8a4e;
+}
